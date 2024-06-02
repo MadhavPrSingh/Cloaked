@@ -1,0 +1,72 @@
+.nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 0;
+    background-color: #EAEAEA;
+
+}
+
+.logo-box {
+    height: 3.7rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-right: 17.5rem;
+}
+
+#nav-logo {
+    height: 2rem;
+    width: 2rem;
+}
+
+
+.nav-options-mid{   
+    display: flex;
+    border-radius: 5px;
+    line-height: 2.0rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.9rem;
+    flex-direction: column;
+    margin: 0 2rem;
+    padding: 5px 15px;
+}
+
+.nav-options-mid:hover{
+    background-color: #f5f5f5;
+    border-bottom: 2px solid black;
+}
+
+.nav-reg-one{
+    margin-left: 13.7rem;
+    margin-right: 2rem;
+}
+.nav-reg{
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.9rem;
+
+}
+
+.login{
+    border-radius: 5px;
+    background-color: #ffff;
+    padding: 0.5rem 0.8rem;
+    font-weight: 600;
+}
+
+.login:hover{
+    filter: brightness(150%);
+}
+
+.signup{
+    border-radius: 5px;
+    background-color: #08D9D6;
+    color: #ffff;
+    padding: 0.5rem 0.8rem;
+    font-weight: 600;
+}
+
+.signup:hover{
+    filter: brightness(150%);
+}
