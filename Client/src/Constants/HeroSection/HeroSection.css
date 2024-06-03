@@ -1,16 +1,17 @@
 .hero-section {
-    background: url(../../Images/background2.jpg) no-repeat center;
+    background: url(/Images/background2.jpg) no-repeat center;
     background-size: cover;
     width: 100%;
 }
 
 .hero-section::before {
     content: "";
-    position: absolute;
+    position: relative;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: 0;
 }
 
 .container{

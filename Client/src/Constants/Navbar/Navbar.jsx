@@ -1,6 +1,6 @@
   import React from 'react'
   import { Link } from 'react-router-dom'
-  import logo1 from '../../Images/logo.png'
+  import logo1 from '/Images/logo.png'
   import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
   import { faHouse, faBriefcase, faBookOpen } from '@fortawesome/free-solid-svg-icons'
 
@@ -12,9 +12,9 @@
           <nav className="navbar navbar-expand-lg fixed-top">
             <div className="container-fluid">
               <img className='nav-logo' src={logo1} alt="logo" />
-              <div className="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+              <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div className="offcanvas-header">
-                  <h5 className="offcanvas-title" id="offcanvasNavbarLabel">Logo</h5>
+                  <img className='nav-logo' src={logo1} alt="logo" />
                   <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div className="offcanvas-body">
