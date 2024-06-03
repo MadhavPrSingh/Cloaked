@@ -1,72 +1,104 @@
-.nav {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 0 0;
-    background-color: #EAEAEA;
-
+.navbar {
+    background-color: white;
+    height: 80px;
+    margin: 20px;
+    border-radius: 16px;
+    padding: 0.5rem;
+    border: 1px, groove, #cecccc;
+    box-shadow: 0 2px 5px black;
+    z-index: 1000;
 }
 
-.logo-box {
-    height: 3.7rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin-right: 17.5rem;
+.navbar-brand {
+    font-weight: 500;
+    color: beige;
+    font-size: 24px;
+    transition: 0.3s color;
 }
 
-#nav-logo {
-    height: 2rem;
-    width: 2rem;
+.nav-logo{
+    height: 4em;
+    width: 4rem;
 }
 
+.login-button {
+    background-color: white;
+    color: black;
+    font-size: 14px;
+    padding: 8px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s background-color;
+    border: 1px groove black;
+    outline: none;
+}
 
-.nav-options-mid{   
-    display: flex;
-    border-radius: 5px;
-    line-height: 2.0rem;
+.signup-button {
+    background-color: black;
+    color: white;
+    font-size: 14px;
+    padding: 8px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s background-color;
+    border: 1px groove black;
+    outline: none;
+}
+
+.login-button:hover, .signup-button:hover {
+    background-color: rgb(186, 185, 185);
+}
+
+.navbar-toggler {
+    border: none;
+    font-size: 1.25rem;
+}
+
+.navbar-toggler:focus, .btn-close:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.items {
+    margin-left: 150px;
+    justify-content:center;
+    flex-grow: 1;
+} 
+
+
+.nav-item {
+    position: relative;
     font-family: "Montserrat", sans-serif;
-    font-size: 0.9rem;
-    flex-direction: column;
-    margin: 0 2rem;
-    padding: 5px 15px;
+    font-weight: 500;
 }
 
-.nav-options-mid:hover{
-    background-color: #f5f5f5;
-    border-bottom: 2px solid black;
+.nav-item a {
+    color: black;
+    text-decoration: none;
+    padding-bottom: 5px;
+    transition: color 0.3s;
 }
 
-.nav-reg-one{
-    margin-left: 13.7rem;
-    margin-right: 2rem;
-}
-.nav-reg{
-    font-family: "Montserrat", sans-serif;
-    font-size: 0.9rem;
-
+.nav-item a:hover, .nav-item a.active {
+    color: azure;
 }
 
-.login{
-    border-radius: 5px;
-    background-color: #ffff;
-    padding: 0.5rem 0.8rem;
-    font-weight: 600;
-}
+@media(min-width: 991px) {
+    .nav-item a::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background-color: blue;
+        visibility: hidden;
+        transition: 0.3s ease-in-out;
+    }
 
-.login:hover{
-    filter: brightness(150%);
-}
-
-.signup{
-    border-radius: 5px;
-    background-color: #08D9D6;
-    color: #ffff;
-    padding: 0.5rem 0.8rem;
-    font-weight: 600;
-}
-
-.signup:hover{
-    filter: brightness(150%);
+    .nav-item a:hover::before, .nav-item a.active::before {
+        width: 100%;
+        visibility: visible;
+    }
 }

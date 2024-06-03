@@ -1,43 +1,48 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import logo1 from '../../Images/logo.png'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
-import { faHouse, faBriefcase, faBookOpen } from '@fortawesome/free-solid-svg-icons'
+  import React from 'react'
+  import { Link } from 'react-router-dom'
+  import logo1 from '../../Images/logo.png'
+  import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
+  import { faHouse, faBriefcase, faBookOpen } from '@fortawesome/free-solid-svg-icons'
 
 
-import './Navbar.css'
+  import './Navbar.css'
 
-const Navbar = () => {
-    return (
-        <div id='navbar-main' className='nav'>
-            <div className='logo-box'>
-                <img id= "nav-logo" className='logo' src={logo1} alt="logo" />
-                <h4>Cloaked</h4>
+  const Navbar = () => {
+      return (
+          <nav className="navbar navbar-expand-lg fixed-top">
+            <div className="container-fluid">
+              <img className='nav-logo' src={logo1} alt="logo" />
+              <div className="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div className="offcanvas-header">
+                  <h5 className="offcanvas-title" id="offcanvasNavbarLabel">Logo</h5>
+                  <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div className="offcanvas-body">
+                  <div className=" items navbar-nav pe-3">
+                    <div className="nav-item nav-link mx-lg-2" aria-current="page">
+                      <Link to={'/'} >Home</Link>
+                    </div>
+                    <div className="nav-item nav-link mx-lg-2">
+                      <Link to={'/jobs'} >Jobs</Link>
+                    </div>
+                    <div className="nav-item nav-link mx-lg-2">
+                      <Link to={'/courses'} >Courses</Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="login-button mx-lg-2">
+                      <Link to={'/signin'} >Sign in</Link>
+              </div>
+              <div className="signup-button">
+                      <Link to={'/signup'} ><span style={{color:'white'}}>Sign up</span></Link>
+              </div>
+              <button className="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+              </button>
             </div>
-            <div className='nav-options-mid'>
-                <FontAwesomeIcon icon = {faHouse} style={{ fontSize: '12px' }}/>
-                <Link to ={'/'}>Community</Link>
-            </div>
-            <div className='nav-options-mid'>
-                <FontAwesomeIcon icon = {faBriefcase} style={{ fontSize: '12px' }}/>
-                <Link to ={'/jobs'}>Jobs</Link>
-            </div>
-            <div className='nav-options-mid'>
-                <FontAwesomeIcon icon = {faBookOpen} style={{ fontSize: '12px' }}/>
-                <Link to ={'/courses'}>Courses</Link>
-            </div>
-            <div className='nav-reg nav-reg-one login'>
-                <Link to ={'/signin'}>Sign in</Link>
-            </div>
-            <div className='nav-reg signup'>
-            <Link to='/signup'>
-                <span style={{ color: '#EAEAEA' }}>Sign up</span>
-            </Link>
-            </div>
-  
-        </div>
-        
-    )
-}
+          </nav>
+      )
+  }
 
-export default Navbar
+  export default Navbar

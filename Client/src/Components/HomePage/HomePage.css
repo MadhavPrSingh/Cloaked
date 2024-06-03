@@ -1,0 +1,28 @@
+
+
+.menu{
+    width: 20%;
+    align-items: start;
+    justify-content: left;
+    border: 5px solid blue;
+}
+
+.post{
+    width: 60%;
+    align-items: center;
+    justify-content: center;
+    margin: 0 6px;
+}
+
+.title{
+    display: flex;
+    flex-direction: row;
+}
+
+.about{
+    width: 20%;
+    align-items: center;
+    justify-content: start;
+    border: 5px solid blue;
+}
+
