@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import "./HomePage.css";
 import HeroSection from "../../Constants/HeroSection/HeroSection";
 import { Link } from "react-router-dom";
@@ -8,16 +9,42 @@ import {
   faBuildingColumns,
   faUserNinja,
   faCirclePlus,
+  faHeart,
+  faComment,
 } from "@fortawesome/free-solid-svg-icons";
-import posts from "./Samples";
+import initialPosts from "./Samples";
 
 const HomePage = () => {
+
+  const [posts, setPosts] = useState(initialPosts);  
+  const [visibleComments, setVisibleComments] = useState(Array(initialPosts.length).fill(2));
+
   const calTimeDiff = (dateTime) => {
     const currTime = new Date();
     const difference = currTime.getTime() - dateTime.getTime();
     const minutes = Math.round(difference / (1000 * 60));
     return `${minutes} minutes ago`;
   };
+  
+  const handleLike = (index) => {
+    const newPosts = [...posts];
+    newPosts[index].Likes += 1;
+    setPosts(newPosts);
+  };
+
+  const handleAddComment = (index, comment) => {
+    const newPosts = [...posts];
+    newPosts[index].comments.push(comment);
+    setPosts(newPosts);
+  };
+
+  const toggleCommentVisiblity = (index) => {
+     const newVisibleComments = [...visibleComments];
+     newVisibleComments[index] = (newVisibleComments[index] === 2) ? posts[index].comments.length: 2;
+     setVisibleComments(newVisibleComments);  
+  }
+
+
 
   return (
     <div>
@@ -55,10 +82,10 @@ const HomePage = () => {
           </div>
           <hr />
           <div className="wall">
-            {posts.map((content) => {
-              const { userName, collegeName, title, dateTime, profilePic, body } = content;
+            {posts.map((content, index) => {
+              const { userName, collegeName, title, dateTime, profilePic, body, Likes, comments } = content;
               return (
-                <div className="wall-box">
+                <div key={`posts-${index}`} className="wall-box">
                   <div className="wall-header">
                     <img
                       src={profilePic}
@@ -78,6 +105,39 @@ const HomePage = () => {
                   </div>
                   <div className="wall-content">
                     <p>{body}</p>
+                  </div>
+                  <div className="wall-actions">
+                    <button onClick={() => handleLike(index)}>
+                        <FontAwesomeIcon icon = {faHeart} style={{color: 'red', marginRight:'4px'}}/> {Likes}
+                    </button>
+                    <button onClick={() => document.getElementById(`comment-input-${index}`).focus()}>
+                        <FontAwesomeIcon icon = {faComment} style={{color: 'black', marginRight:'4px'}}/> {comments.length}
+                    </button>
+                  </div>
+                  <div className="wall-comments">
+                    <input 
+                        type="text"
+                        id = {`comment-input-${index}`}
+                        placeholder="Add a comment..." 
+                        onKeyDown={(e) => {
+                            if( e.key === 'Enter' && e.target.value.trim() !== '') {
+                                handleAddComment(index, e.target.value);
+                                e.target.value = '';
+                            }
+                        }}
+                    />
+                    {comments.slice(0, visibleComments[index]).map((comment, i) =>(
+                        <p key={i}>
+                            <strong>{comment.userName}:</strong> {comment.text}
+                        </p>
+                    ))}
+                    {comments.length > 2 && (
+                        <button className="view-all-comments" onClick={() => toggleCommentVisiblity(index)}>
+                            {visibleComments[index] === 2
+                                ? `View all ${comments.length} comments`
+                                : "Hide comments"}
+                        </button>
+                    )}
                   </div>
                 </div>
               );

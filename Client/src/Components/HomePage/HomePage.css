@@ -157,3 +157,79 @@
     outline: none;
     margin-right: 5px;
 }
+
+.wall-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 20px;
+}
+
+.wall-actions button {
+    background-color: transparent;
+    border: none;
+    background-color: #eceaea;
+    border-radius: 25px;
+    color: #3ABEF9;
+    font-size: 14px;
+    font-family: "Montserrat", sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    padding: 5px 8px;
+}
+
+.wall-actions button:hover {
+    color: #1F8AC0;
+}
+
+.wall-actions button:focus {
+    outline: none;
+}
+
+.wall-comments {
+    padding: 10px 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.wall-comments input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.wall-comments input:focus {
+    outline: none;
+    border-color: #3ABEF9;
+}
+
+.wall-comments p {
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    margin: 10px 0 0;
+}
+
+.view-all-comments {
+    border: none;
+    background-color: white;
+    font-size: 14px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    color: #a09f9f;
+}
+
+.view-all-comments:hover {
+    color: #1F8AC0;
+}
+
+.view-all-comments:focus {
+    outline: none;
+}
