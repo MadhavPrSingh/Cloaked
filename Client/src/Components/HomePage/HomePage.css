@@ -233,6 +233,7 @@
 .view-all-comments:focus {
     outline: none;
 }
+<<<<<<< HEAD
 
 .comment {
     margin-bottom: 20px;
@@ -283,3 +284,5 @@
   .reply input {
     width: calc(100% - 40px);
   }
+=======
+>>>>>>> origin/main
