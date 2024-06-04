@@ -1,0 +1,36 @@
+.parent-comment {
+    border: 1px solid black;
+    padding: 5px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.parent-wall {
+    display: flex;
+    flex-direction: row;
+}
+
+.post-comment {
+    border-radius: 10px;
+    background-color: burlywood;
+    padding: 5px;
+    margin: 3px;
+}
+
+.p-comment-d-block{
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+    margin: 2px;
+}
+
+.display-parent-comments {
+    border: 1px solid black;
+    padding: 25px;
+}
+.replies {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
