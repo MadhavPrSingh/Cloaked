@@ -92,27 +92,7 @@
     margin-bottom: 20px;
 }
 
-@keyframes rgbFireworks {
-    0% {
-      box-shadow: 0 0 0px rgb(255, 0, 0), 0 0 0px rgb(0, 255, 0), 0 0 0px rgb(0, 0, 255);
-    }
-    25% {
-      box-shadow: 0 0 10px rgb(255, 0, 0), 0 0 10px rgb(0, 255, 0), 0 0 10px rgb(0, 0, 255);
-    }
-    50% {
-      box-shadow: 0 0 20px rgb(255, 0, 0), 0 0 20px rgb(0, 255, 0), 0 0 20px rgb(0, 0, 255);
-    }
-    75% {
-      box-shadow: 0 0 30px rgb(255, 0, 0), 0 0 30px rgb(0, 255, 0), 0 0 30px rgb(0, 0, 255);
-    }
-    100% {
-      box-shadow: 0 0 40px rgb(255, 0, 0), 0 0 40px rgb(0, 255, 0), 0 0 40px rgb(0, 0, 255);
-    }
-  }
-  
-  .rgb-fireworks {
-    animation: rgbFireworks 1s linear;
-  }
+
 
 .wall-info{
     display: flex;
@@ -166,7 +146,7 @@
 }
 
 .wall-content {
-    padding: 20px;
+    padding: 0 20px;
 }
 
 .wall-content p {
@@ -322,3 +302,65 @@
     margin: 5px;
     padding: 3px 12px;
   }
+
+  .like-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    color: grey;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    border-radius: 25px;
+    margin: 5px;
+    padding: 3px 12px;
+    outline: none;
+  }
+  
+  .like-button.liked {
+    color: red;
+  }
+  
+  .like-button .fa-heart {
+    transition: transform 0.3s ease;
+  }
+  
+  .like-button.liked .fa-heart {
+    transform: scale(1.2);
+  }
+  
+  .like-button:focus {
+    outline: none;
+  }
+  
+  .like-button.liked::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 2px solid rgba(255, 0, 0, 0.5);
+    border-radius: 25px;
+    animation: pulsate 1s ease infinite;
+    animation-iteration-count: 2;
+  }
+  
+  @keyframes pulsate {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  

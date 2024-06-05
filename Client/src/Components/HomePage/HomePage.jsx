@@ -18,20 +18,48 @@ import Comments from "../../Constants/Comments/Comments";
 
 const HomePage = () => {
   const [posts, setPosts] = useState(initialPosts);
-  const [likeCounts, setLikeCounts] = useState(Array(initialPosts.length).fill(0));
+  const [likeCounts, setLikeCounts] = useState(
+    initialPosts.map(post => post.Likes)
+  );
   const [showCommentBox, setShowCommentBox] = useState(Array(initialPosts.length).fill(false));
+  const [likedPosts, setLikedPosts] = useState(initialPosts.map(() => false));
 
   const calTimeDiff = (dateTime) => {
     const currTime = new Date();
     const difference = currTime.getTime() - dateTime.getTime();
     const minutes = Math.round(difference / (1000 * 60));
-    return `${minutes} minutes ago`;
-  };
+    if (minutes < 60) {
+        return `${minutes} minutes ago`;
+    } else if (minutes < 1440) {
+        const hours = Math.round(minutes / 60);
+        return `${hours} hours ago`;
+    } else if (minutes < 10080) {
+        const days = Math.round(minutes / 1440);
+        return `${days} days ago`;
+    } else if (minutes < 43829.1) {
+        const weeks = Math.round(minutes / 10080);
+        return `${weeks} weeks ago`;
+    } else {
+        const years = Math.round(minutes / 525600);
+        return `${years} years ago`;
+    }
+};
+
 
   const handleLike = (index) => {
     const newLikeCounts = [...likeCounts];
-    newLikeCounts[index]++;
+    const newLikedPosts = [...likedPosts];
+
+    if (newLikedPosts[index]) {
+      newLikeCounts[index]--;
+    } else {
+      newLikeCounts[index]++;
+    }
+    
+    newLikedPosts[index] = !newLikedPosts[index];
+
     setLikeCounts(newLikeCounts);
+    setLikedPosts(newLikedPosts);
   };
 
   const toggleCommentBox = (index) => {
@@ -109,8 +137,8 @@ const HomePage = () => {
                   </div>
                   <div className="post-buttons">
                     <div>
-                      <button className="action-button" onClick={() => handleLike(index)}>
-                        <FontAwesomeIcon icon={faHeart} style={{color: 'red', margin:'3px'}}/>
+                    <button className={`like-button ${likedPosts[index] ? 'liked' : ''}`} onClick={() => handleLike(index)}>
+                        <FontAwesomeIcon icon={faHeart} style={{margin:'3px'}}/>
                         {likeCounts[index]}
                       </button>
                     </div>
