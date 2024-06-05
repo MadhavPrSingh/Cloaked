@@ -1,24 +1,36 @@
 .parent-comment {
-    border: 1px solid black;
-    padding: 5px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+    border: 1px solid #e0e0e0;
+    padding: 8px;
+    width: 60%;
+    border-radius: 25px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-bottom: 2px;
+    font-size: 14px;
 }
 
 .parent-wall {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    margin: 10px 0 0;
 }
 
 .post-comment {
-    border-radius: 10px;
-    background-color: burlywood;
-    padding: 5px;
-    margin: 3px;
+    border: none;
+    background-color: #3ABEF9;
+    color: white;
+    padding: 5px 10px;
+    margin-left: 10px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.p-comment-d-block{
+.post-comment:hover {
+    background-color: #1F8AC0;
+}
+
+.p-comment-d-block {
     display: flex;
     flex-direction: column;
     margin-top: 8px;
@@ -26,11 +38,106 @@
 }
 
 .display-parent-comments {
-    border: 1px solid black;
-    padding: 25px;
+    border: none;
+    padding: 0px;
+    width: 90%;
+    background-color: #f8f8f8;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    position: relative;
 }
+
+.rep-box > span {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 16px;
+    margin-bottom: 2px;
+    color: #333;
+    padding-left: 25px;
+    font-weight: 500;
+}
+
 .replies {
     display: flex;
     flex-direction: column;
-    margin: 10px;
+    margin-left: 30px;
+    margin-top: 5px;
 }
+
+.comment {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+    margin-bottom: 10px;
+}
+
+.reply-container {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.comment-reply {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.comment-reply input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #e0e0e0;
+    border-radius: 25px;
+    font-family: "Montserrat", sans-serif;
+    margin-right: 10px;
+}
+
+.comment-reply button {
+    border: none;
+    background-color: #3ABEF9;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.comment-reply button:hover {
+    background-color: #1F8AC0;
+}
+
+.reply {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    color: #333;
+}
+
+.reply input {
+    width: calc(100% - 40px);
+}
+
+.comments-wall {
+    width: 100%;
+    margin: 8px 8px 0;
+
+    padding-left: 5px;
+}
+
+.rep-box{
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-rep {
+    border: none;
+    outline: none;
+    margin-left: 30px;
+    border-radius: 10px;   
+    width: 10%; 
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+    color: #949494;
+    font-weight: 600;
+    font-size: 12px;
+}   

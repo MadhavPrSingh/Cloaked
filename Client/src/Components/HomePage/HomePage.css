@@ -79,6 +79,12 @@
     margin-top: 12px;
 }
 
+.post-buttons {
+    display: flex;
+    flex-direction: row;
+    padding-left: 10px;
+}
+
 
 .wall-box {
     border-radius: 25px;
@@ -86,6 +92,27 @@
     margin-bottom: 20px;
 }
 
+@keyframes rgbFireworks {
+    0% {
+      box-shadow: 0 0 0px rgb(255, 0, 0), 0 0 0px rgb(0, 255, 0), 0 0 0px rgb(0, 0, 255);
+    }
+    25% {
+      box-shadow: 0 0 10px rgb(255, 0, 0), 0 0 10px rgb(0, 255, 0), 0 0 10px rgb(0, 0, 255);
+    }
+    50% {
+      box-shadow: 0 0 20px rgb(255, 0, 0), 0 0 20px rgb(0, 255, 0), 0 0 20px rgb(0, 0, 255);
+    }
+    75% {
+      box-shadow: 0 0 30px rgb(255, 0, 0), 0 0 30px rgb(0, 255, 0), 0 0 30px rgb(0, 0, 255);
+    }
+    100% {
+      box-shadow: 0 0 40px rgb(255, 0, 0), 0 0 40px rgb(0, 255, 0), 0 0 40px rgb(0, 0, 255);
+    }
+  }
+  
+  .rgb-fireworks {
+    animation: rgbFireworks 1s linear;
+  }
 
 .wall-info{
     display: flex;
@@ -233,14 +260,13 @@
 .view-all-comments:focus {
     outline: none;
 }
-<<<<<<< HEAD
 
 .comment {
     margin-bottom: 20px;
     padding: 10px;
     border-radius: 10px;
     background-color: #f8f8f8;
-  }
+}
   
   .reply-container {
     margin-left: 20px;
@@ -284,5 +310,15 @@
   .reply input {
     width: calc(100% - 40px);
   }
-=======
->>>>>>> origin/main
+
+  .action-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    margin: 5px;
+    padding: 3px 12px;
+  }

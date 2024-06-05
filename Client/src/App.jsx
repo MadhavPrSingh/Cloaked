@@ -7,10 +7,7 @@ import Jobs from './Components/Jobs/Jobs'
 import Login from './Components/Login/Login'
 import MakePost from './Components/MakePost/MakePost'
 import SignUp from './Components/SignUp/SignUp'
-<<<<<<< HEAD
 import Comments from './Constants/Comments/Comments'
-=======
->>>>>>> origin/main
 
 function App() {
   return (
@@ -22,10 +19,7 @@ function App() {
         <Route path="/jobs" element = {<Jobs />}></Route>
         <Route path="/courses" element = {<Courses />}></Route>
         <Route path="/admin" element = {<Admin />}></Route>
-<<<<<<< HEAD
         <Route path="/comm" element = {<Comments />}></Route>
-=======
->>>>>>> origin/main
       </Routes>
   )
 }
