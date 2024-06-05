@@ -1,4 +1,5 @@
 // Import the useState hook and the initialPosts array
+
 import React, { useState } from "react";
 import "./HomePage.css";
 import HeroSection from "../../Constants/HeroSection/HeroSection";
