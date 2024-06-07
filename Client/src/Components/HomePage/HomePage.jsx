@@ -1,50 +1,57 @@
-// Import the useState hook and the initialPosts array
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./HomePage.css";
 import HeroSection from "../../Constants/HeroSection/HeroSection";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCompass,
-  faBuildingColumns,
   faUserNinja,
   faCirclePlus,
   faHeart,
   faComment,
+  faHashtag,
 } from "@fortawesome/free-solid-svg-icons";
 import initialPosts from "./Samples"; // Import the initialPosts array
 import Comments from "../../Constants/Comments/Comments";
+import collegesData from "./Colleges";
+import filters from "./Filters";
 
 const HomePage = () => {
   const [posts, setPosts] = useState(initialPosts);
   const [likeCounts, setLikeCounts] = useState(
-    initialPosts.map(post => post.Likes)
+    initialPosts.map((post) => post.Likes)
   );
-  const [showCommentBox, setShowCommentBox] = useState(Array(initialPosts.length).fill(false));
+  const [showCommentBox, setShowCommentBox] = useState(
+    Array(initialPosts.length).fill(false)
+  );
   const [likedPosts, setLikedPosts] = useState(initialPosts.map(() => false));
+  const [colleges, setColleges] = useState([]);
+  const [filterTypes, setfilterTypes] = useState([]);
 
   const calTimeDiff = (dateTime) => {
     const currTime = new Date();
     const difference = currTime.getTime() - dateTime.getTime();
     const minutes = Math.round(difference / (1000 * 60));
     if (minutes < 60) {
-        return `${minutes} minutes ago`;
+      return `${minutes} minutes ago`;
     } else if (minutes < 1440) {
-        const hours = Math.round(minutes / 60);
-        return `${hours} hours ago`;
+      const hours = Math.round(minutes / 60);
+      return `${hours} hours ago`;
     } else if (minutes < 10080) {
-        const days = Math.round(minutes / 1440);
-        return `${days} days ago`;
+      const days = Math.round(minutes / 1440);
+      return `${days} days ago`;
     } else if (minutes < 43829.1) {
-        const weeks = Math.round(minutes / 10080);
-        return `${weeks} weeks ago`;
+      const weeks = Math.round(minutes / 10080);
+      return `${weeks} weeks ago`;
     } else {
-        const years = Math.round(minutes / 525600);
-        return `${years} years ago`;
+      const years = Math.round(minutes / 525600);
+      return `${years} years ago`;
     }
-};
+  };
 
+  useEffect(() => {
+    setColleges(collegesData);
+    setfilterTypes(filters);
+  }, []); 
 
   const handleLike = (index) => {
     const newLikeCounts = [...likeCounts];
@@ -55,7 +62,7 @@ const HomePage = () => {
     } else {
       newLikeCounts[index]++;
     }
-    
+
     newLikedPosts[index] = !newLikedPosts[index];
 
     setLikeCounts(newLikeCounts);
@@ -70,9 +77,11 @@ const HomePage = () => {
 
   const updateComments = (postId, newComments) => {
     // Update only the comments of the post with the given postId
-    setPosts(posts.map(post =>
-      post.id === postId ? { ...post, comments: newComments } : post
-    ));
+    setPosts(
+      posts.map((post) =>
+        post.id === postId ? { ...post, comments: newComments } : post
+      )
+    );
   };
 
   return (
@@ -81,19 +90,34 @@ const HomePage = () => {
       <div className="flex-row">
         <div className="sub-nav">
           <div className="sub-nav-item">
-            <FontAwesomeIcon icon={faCompass} className="sub-nav-icon" />
-            <Link to="/">
-              <h5>Explore</h5>
-            </Link>
+            <h4>College Directory</h4>
+            <div className="college-category">
+                <ul className="category-list">
+                  {colleges.map((college, index) => (
+                    <li key={index}>
+                      <div className="college-list">
+                        <img className="college-img" src={college.img} alt="" style={{marginRight:'5px'}} />
+                        <p>{college.name}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
           </div>
           <div className="sub-nav-item">
-            <FontAwesomeIcon
-              icon={faBuildingColumns}
-              className="sub-nav-icon"
-            />
-            <Link to="/">
-              <h5>My College</h5>
-            </Link>
+            <h4>Featured Categories</h4>
+            <div className="college-category" >   
+              <ul className="category-list">
+                  {filterTypes.map((filter, index) => (
+                    <li key={index}>
+                      <div className="feature-list">
+                        <FontAwesomeIcon icon={faHashtag} style={{marginRight:'4px'}} ></FontAwesomeIcon>
+                        <p>{filter.name}</p>
+                      </div>
+                    </li>
+                  ))}
+              </ul>
+            </div>
           </div>
         </div>
 
@@ -112,7 +136,16 @@ const HomePage = () => {
           <hr />
           <div className="wall">
             {posts.map((content, index) => {
-              const { id, userName, collegeName, title, dateTime, profilePic, body, comments } = content;
+              const {
+                id,
+                userName,
+                collegeName,
+                title,
+                dateTime,
+                profilePic,
+                body,
+                comments,
+              } = content;
               return (
                 <div key={`posts-${index}`} className="wall-box">
                   <div className="wall-header">
@@ -137,20 +170,40 @@ const HomePage = () => {
                   </div>
                   <div className="post-buttons">
                     <div>
-                    <button className={`like-button ${likedPosts[index] ? 'liked' : ''}`} onClick={() => handleLike(index)}>
-                        <FontAwesomeIcon icon={faHeart} style={{margin:'3px'}}/>
+                      <button
+                        className={`like-button ${
+                          likedPosts[index] ? "liked" : ""
+                        }`}
+                        onClick={() => handleLike(index)}
+                      >
+                        <FontAwesomeIcon
+                          icon={faHeart}
+                          style={{ margin: "3px" }}
+                        />
                         {likeCounts[index]}
                       </button>
                     </div>
                     <div>
-                      <button className="action-button" onClick={() => toggleCommentBox(index)}>
-                        <FontAwesomeIcon icon={faComment} style={{color: '#068FFF', margin:'3px'}} />
+                      <button
+                        className="action-button"
+                        onClick={() => toggleCommentBox(index)}
+                      >
+                        <FontAwesomeIcon
+                          icon={faComment}
+                          style={{ color: "#068FFF", margin: "3px" }}
+                        />
                         {comments.length}
                       </button>
                     </div>
                   </div>
                   {/* Pass the comments of the current post and its postId to the Comments component */}
-                  {showCommentBox[index] && <Comments comments={comments} postId={id} updateComments={updateComments} />}
+                  {showCommentBox[index] && (
+                    <Comments
+                      comments={comments}
+                      postId={id}
+                      updateComments={updateComments}
+                    />
+                  )}
                 </div>
               );
             })}
