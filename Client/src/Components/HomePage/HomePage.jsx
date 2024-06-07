@@ -97,7 +97,9 @@ const HomePage = () => {
                     <li key={index}>
                       <div className="college-list">
                         <img className="college-img" src={college.img} alt="" style={{marginRight:'5px'}} />
-                        <p>{college.name}</p>
+                          <Link to={`/myuni/${college.id}`}>
+                            <p>{college.name}</p>
+                          </Link>
                       </div>
                     </li>
                   ))}
