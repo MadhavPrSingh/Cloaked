@@ -11,7 +11,7 @@ const collegesData = [
     },
     { 
         id:2, 
-        name: 'IIT Knapur', 
+        name: 'IIT Kanpur', 
         img: '/Images/iitk.png',
         description: '',
         academics: '',

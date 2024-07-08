@@ -26,6 +26,7 @@ const HomePage = () => {
   const [likedPosts, setLikedPosts] = useState(initialPosts.map(() => false));
   const [colleges, setColleges] = useState([]);
   const [filterTypes, setfilterTypes] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const calTimeDiff = (dateTime) => {
     const currTime = new Date();
@@ -84,6 +85,10 @@ const HomePage = () => {
     );
   };
 
+  const filteredColleges = colleges.filter(college => 
+    college.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div>
       <HeroSection />
@@ -91,9 +96,16 @@ const HomePage = () => {
         <div className="sub-nav">
           <div className="sub-nav-item">
             <h4>College Directory</h4>
+              <input
+                type="text"
+                placeholder="Search for a college..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                style={{ marginBottom: '10px', padding: '7px', width: '90%', borderRadius:'20px', marginLeft: '8px' }}
+              />
             <div className="college-category">
                 <ul className="category-list">
-                  {colleges.map((college, index) => (
+                  {filteredColleges.map((college, index) => (
                     <li key={index}>
                       <div className="college-list">
                         <img className="college-img" src={college.img} alt="" style={{marginRight:'5px'}} />

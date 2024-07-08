@@ -23,10 +23,10 @@
                       <Link to={'/'} >Home</Link>
                     </div>
                     <div className="nav-item nav-link mx-lg-2">
-                      <Link to={'/myuni'} >MyUni</Link>
+                      <Link to={'/collaborate'} >Collaborate</Link>
                     </div>
                     <div className="nav-item nav-link mx-lg-2">
-                      <Link to={'/courses'} >Courses</Link>
+                      <Link to={'/events'} >Events</Link>
                     </div>
                   </div>
                 </div>

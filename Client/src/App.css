@@ -26,8 +26,12 @@ a {
 
 }
 
+.centre{
+    align-items: center;
+    justify-content: center;
+}
+
 .flex-col {
-    margin: 1.5rem, 0;
     display: flex;
     flex-direction: column;
 }

@@ -108,13 +108,9 @@ const CommentItem = ({ comment, updateComment }) => {
         <span style={{marginLeft:'15px'}}>{comment.body}</span>
         <div className="rep-btns">
           {isReplying ? (
-            <button className="btn-rep" onClick={() => setIsReplying(false)}>
-              Cancel
-            </button>
+            <button className="btn-rep" onClick={() => setIsReplying(false)}>Cancel</button>
           ) : (
-            <button className="btn-rep" onClick={() => setIsReplying(true)}>
-              Reply
-            </button>
+            <button className="btn-rep" onClick={() => setIsReplying(true)}>Reply</button>
           )}
           {comment.comments.length > 0 && (
             <button className="btn-view-replies" onClick={toggleReplies}>

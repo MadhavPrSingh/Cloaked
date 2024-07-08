@@ -95,38 +95,37 @@ const MyUniPage = () => {
       <div className="flex-row">
         <div className="sub-nav">
           <div className="college-info">
-            <h2>{collegeData.name}</h2>
-            <div className="overview">
-              <h3>Overview</h3>
+            <div className='college-info-header'>
+                <img src={collegeData.img} alt="Logo"/>
+                <h2>{collegeData.name}</h2>
+                <hr style={{width:'90%'}} />
+            </div>
+            <div className="overview flex-col centre">
+              <h5>Overview</h5>
               <p>{collegeData.description}</p>
             </div>
-            <div className="academics">
-              <h3>Academics</h3>
+            <div className="academics flex-col centre">
+              <h5>Academics</h5>
               <p>{collegeData.academics}</p>
             </div>
-            <div className="admissions">
-              <h3>Admissions</h3>
+            <div className="admissions flex-col centre">
+              <h5>Admissions</h5>
               <p>{collegeData.admissions}</p>
             </div>
-            <div className="campus-life">
-              <h3>Campus Life</h3>
+            <div className="campus-life flex-col centre">
+              <h5>Campus Life</h5>
               <p>{collegeData.campusLife}</p>
             </div>
-            <div className="resources">
-              <h3>Resources</h3>
+            <div className="resources flex-col centre">
+              <h5>Resources</h5>
               <p>{collegeData.resources}</p>
             </div>
           </div>
         </div>
 
         <div className="view">
-          <div className="top-title">
-            <FontAwesomeIcon icon={faCirclePlus} style={{ fontSize: '20px' }} />
+          <div className="college-title">
             <h4>{collegeData.name} Posts</h4>
-          </div>
-          <div className="post">
-            <FontAwesomeIcon icon={faCirclePlus} style={{ margin: '0 10px', fontSize: '25px', color: '#3ABEF9' }} />
-            <p>Start a post...</p>
           </div>
           <hr />
           <div className="wall">
