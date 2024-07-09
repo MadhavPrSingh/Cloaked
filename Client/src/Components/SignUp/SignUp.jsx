@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import allowedDomains from './allowedDomains'
 import "./SignUp.css";
 
 const Signup = () => {
@@ -23,6 +24,35 @@ const Signup = () => {
     const handleUsernameBlur = () => {
         setShowUsernamerompt(false);
     }
+
+    const handleSignUp = async () =>  {
+        const [, domain] = email.split('@');
+        if(!allowedDomains.includes(domain)){
+            alert('Please Use a valid college email address');
+            return; 
+        }
+
+        try {
+            const response = await fetch('http://localhost:3000/signup', {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password,
+                    email: email
+                }),
+            });
+
+            if(!response.ok) throw new Error('Sign up Failed');
+            const json = await response.json();
+            console.log(json);
+        } catch(err) {
+            console.error('Error during Signup', err);
+            alert('Error During Signup. Please Try Again');
+        }
+    };
 
     return (
         <div className='signup-card'>
@@ -63,7 +93,7 @@ const Signup = () => {
                     />
                    
                 </div>
-                <button className='login-btn' type="submit">Sign Up</button>
+                <button className='login-btn' onClick={handleSignUp} type="submit">Sign Up</button>
             </div>
             <br />
             <div className='signup-post-form post-t1'>
