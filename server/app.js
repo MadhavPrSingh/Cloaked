@@ -92,8 +92,29 @@ app.post("/signup", async (req, res) => {
 
 //For User Login
 app.post("/signin", async (req, res) => {
-    
-})
+    const { username, password } = req.body;
+    try {
+        const user = await User.findOne({ where: { username } });
+        if(!user) {
+            return res.status(400).json({ message: 'Invalid Username or Password' });
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+        if(!isMatch){
+            return res.status(400).json({ message: 'Invalid Username or password' });
+        }
+
+        if(!user.verified) {
+            return res.status(400).json({ message: 'Please Verify Your Email address' });
+        }
+
+        res.status(200).json({message: 'Signin Successfull'});
+        console.log('maza aa gaya');
+    } catch(err) {
+        console.error('Error During Signin:', err);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+});
 
 // Establish database connection
 connection();
